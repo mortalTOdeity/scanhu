@@ -1,11 +1,13 @@
 <template>
   <div class="barcode-scanner">
-    <div class="scanner-container" v-show="!isLoading">
-      <video poster="data:image/gif,AAAA" ref="scanner"></video>
+    <div class="scanner-container"
+         v-show="!isLoading">
+      <video poster="data:image/gif,AAAA"
+             ref="scanner"></video>
       <div class="overlay-element"></div>
       <div class="laser"></div>
     </div>
-    <div class="camera-radio-box">
+    <!-- <div class="camera-radio-box">
       <van-radio-group
         v-model="currentCamera"
         @change="switchCamera"
@@ -18,10 +20,11 @@
           >{{ camera.label }}</van-radio
         >
       </van-radio-group>
-    </div>
+    </div> -->
     {{ decodeResult }}
     <div class="handle-button-box">
-      <van-button type="primary" @click="startScan">开始扫描</van-button>
+      <van-button type="primary"
+                  @click="startScan">开始扫描</van-button>
     </div>
   </div>
 </template>
@@ -93,12 +96,12 @@ export default {
       this.$refs.scanner.oncanplay = event => {
         this.isLoading = false
       }
-    },
-    switchCamera (cameraId) {
-      this.codeReader.reset()
-      this.currentCamera = cameraId
-      this.startScan()
     }
+    // switchCamera (cameraId) {
+    //   this.codeReader.reset()
+    //   this.currentCamera = cameraId
+    //   this.startScan()
+    // }
   }
 }
 </script>
